@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import Pomodoro from "./pomodoro/Pomodoro";
 import TodoList from "./todoList/TodoList";
+import "./PomoTodo.css";
 
 class PomoTodo extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="PomoTodo">

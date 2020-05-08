@@ -10,6 +10,7 @@ class TodoList extends Component {
         };
         this.addTodo = this.addTodo.bind(this);
         this.removeTodo = this.removeTodo.bind(this);
+        this.toggleTodo = this.toggleTodo.bind(this);
     }
 
     addTodo(newTodo) {
@@ -22,6 +23,16 @@ class TodoList extends Component {
         });
     }
 
+    toggleTodo(doneTodoId) {
+        let newTodos = this.state.todos.map(todo => {
+            if (todo.id === doneTodoId) {
+                return { ...todo, done: !todo.done };
+            }
+            return todo;
+        });
+        this.setState({ todos: newTodos });
+    }
+
     render() {
         return (
             <div className="TodoList">
@@ -31,7 +42,9 @@ class TodoList extends Component {
                         desc={t.desc}
                         key={t.id}
                         id={t.id}
+                        done={t.done}
                         removeTodo={this.removeTodo}
+                        toggleTodo={this.toggleTodo}
                     />
                 ))}
                 <NewTodoForm addTodo={this.addTodo} />
