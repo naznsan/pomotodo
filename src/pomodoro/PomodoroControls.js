@@ -10,6 +10,7 @@ class PomodoroControls extends Component {
         };
         this.toggleEdit = this.toggleEdit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handlePlay = this.handlePlay.bind(this);
     }
 
     toggleEdit(event) {
@@ -22,6 +23,10 @@ class PomodoroControls extends Component {
         this.setState({
             [event.target.name]: parseInt(event.target.value),
         });
+    }
+
+    handlePlay() {
+        this.props.togglePlay();
     }
 
     render() {
@@ -51,7 +56,7 @@ class PomodoroControls extends Component {
                     </form>
                 ) : (
                     <div>
-                        <button>Play/Pause</button>
+                        <button onClick={this.handlePlay}>Play/Pause</button>
                         <button onClick={this.toggleEdit}>Edit</button>
                     </div>
                 )}

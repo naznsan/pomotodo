@@ -12,6 +12,7 @@ class Pomodoro extends Component {
             isPaused: true,
         };
         this.changeTime = this.changeTime.bind(this);
+        this.togglePlay = this.togglePlay.bind(this);
     }
 
     changeTime(newTime) {
@@ -20,6 +21,11 @@ class Pomodoro extends Component {
             restTime: newTime.restTime,
             isPaused: true,
         });
+    }
+
+    togglePlay() {
+        const newState = { ...this.state, isPaused: !this.state.isPaused };
+        this.setState(newState);
     }
 
     render() {
@@ -35,6 +41,7 @@ class Pomodoro extends Component {
                     changeTime={this.changeTime}
                     workTime={this.state.workTime}
                     restTime={this.state.restTime}
+                    togglePlay={this.togglePlay}
                 />
             </div>
         );
