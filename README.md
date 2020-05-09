@@ -13,3 +13,4 @@ PomoTodo was made using React as practice.
 * Make Pomodoro timer customizable
 * Add rest timer
 * Possibly add login functionality to save todos and timer
+* Better layout on mobile
