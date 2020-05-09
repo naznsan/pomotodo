@@ -2,5 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    justify-self: flex-end;
+    height: 3.5em;
 }

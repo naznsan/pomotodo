@@ -16,10 +16,14 @@ class Pomodoro extends Component {
     }
 
     changeTime(newTime) {
+        // Setting custom time requires work still
+        // Can't get new set time into PomodoroClock
+        // as PomodoroClock just keeps the old time and only updates initial time
         this.setState({
             workTime: newTime.workTime,
             restTime: newTime.restTime,
             isPaused: true,
+            changed: true,
         });
     }
 
@@ -31,11 +35,10 @@ class Pomodoro extends Component {
     render() {
         return (
             <div className="Pomodoro">
-                <h1>Pomodoro goes here</h1>
                 <PomodoroClock
-                    workTime={this.state.workTime}
-                    restTime={this.state.restTime}
+                    initialMinutes={this.state.workTime}
                     isPaused={this.state.isPaused}
+                    changed={false}
                 />
                 <PomodoroControls
                     changeTime={this.changeTime}

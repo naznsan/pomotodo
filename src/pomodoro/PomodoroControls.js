@@ -57,7 +57,7 @@ class PomodoroControls extends Component {
                 ) : (
                     <div>
                         <button onClick={this.handlePlay}>Play/Pause</button>
-                        <button onClick={this.toggleEdit}>Edit</button>
+                        {/* <button onClick={this.toggleEdit}>Edit</button> */}
                     </div>
                 )}
             </div>

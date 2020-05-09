@@ -7,7 +7,9 @@ class PomoTodo extends Component {
     render() {
         return (
             <div className="PomoTodo">
-                <h1>Welcome to PomoTodo</h1>
+                <div className="PomoTodo-header">
+                    <h1>PomoTodo</h1>
+                </div>
                 <Pomodoro />
                 <TodoList />
             </div>

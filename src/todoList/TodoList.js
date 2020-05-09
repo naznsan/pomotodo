@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
+import "./TodoList.css";
 
 class TodoList extends Component {
     constructor(props) {
@@ -36,17 +37,21 @@ class TodoList extends Component {
     render() {
         return (
             <div className="TodoList">
-                <h1>TodoList goes here</h1>
-                {this.state.todos.map(t => (
-                    <Todo
-                        desc={t.desc}
-                        key={t.id}
-                        id={t.id}
-                        done={t.done}
-                        removeTodo={this.removeTodo}
-                        toggleTodo={this.toggleTodo}
-                    />
-                ))}
+                <div className="TodoList-todos">
+                    {this.state.todos.length === 0 ? (
+                        <h3>What would you like to get done today?</h3>
+                    ) : null}
+                    {this.state.todos.map(t => (
+                        <Todo
+                            desc={t.desc}
+                            key={t.id}
+                            id={t.id}
+                            done={t.done}
+                            removeTodo={this.removeTodo}
+                            toggleTodo={this.toggleTodo}
+                        />
+                    ))}
+                </div>
                 <NewTodoForm addTodo={this.addTodo} />
             </div>
         );

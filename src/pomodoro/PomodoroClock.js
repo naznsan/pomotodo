@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "./PomodoroClock.css";
 
 class PomodoroClock extends Component {
     static defaultProps = {
-        minutes: 45,
+        initialMinutes: 45,
         seconds: 0,
         isPaused: true,
     };
@@ -10,7 +11,7 @@ class PomodoroClock extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            minutes: 45,
+            minutes: this.props.initialMinutes,
             seconds: 0,
         };
         this.countdown = this.countdown.bind(this);
@@ -38,7 +39,7 @@ class PomodoroClock extends Component {
         }
         return (
             <div className="PomodoroClock">
-                <h2>
+                <h2 className="PomodoroClock-clock">
                     {this.state.minutes} : {parsedSeconds}
                 </h2>
             </div>
@@ -47,6 +48,10 @@ class PomodoroClock extends Component {
 
     componentDidMount() {
         this.countdown();
+    }
+
+    componentDidUpdate() {
+        console.log("Updated");
     }
 }
 
