@@ -22,13 +22,18 @@ class Todo extends Component {
             doneStyle = {
                 textDecoration: "line-through",
                 fontStyle: "italic",
+                color: "#999999",
             };
         }
         return (
             <div className="Todo">
                 <p style={doneStyle}>{this.props.desc}</p>
-                <button onClick={this.handleToggle}>Done</button>
-                <button onClick={this.handleDelete}>Delete</button>
+                <button className="Todo-done" onClick={this.handleToggle}>
+                    <i class="fas fa-check"></i>
+                </button>
+                <button className="Todo-delete" onClick={this.handleDelete}>
+                    <i class="fas fa-trash"></i>
+                </button>
             </div>
         );
     }

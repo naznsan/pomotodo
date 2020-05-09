@@ -36,9 +36,12 @@ class NewTodoForm extends Component {
                         onChange={this.handleChange}
                         name="desc"
                         value={this.state.desc}
+                        placeholder="Add New Todo"
                     ></input>
                 </div>
-                <button>Add</button>
+                <button>
+                    <i class="fas fa-plus fa-2x"></i>
+                </button>
             </form>
         );
     }

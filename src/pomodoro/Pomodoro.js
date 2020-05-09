@@ -45,6 +45,7 @@ class Pomodoro extends Component {
                     workTime={this.state.workTime}
                     restTime={this.state.restTime}
                     togglePlay={this.togglePlay}
+                    isPaused={this.state.isPaused}
                 />
             </div>
         );

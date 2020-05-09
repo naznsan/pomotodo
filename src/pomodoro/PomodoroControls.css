@@ -1,0 +1,10 @@
+.PomodoroControls {
+    height: 2.5em;
+}
+
+.PomodoroControls button {
+    font-size: 1.75em;
+    border: none;
+    color: #eeeeee;
+    background-color: #353535;
+}

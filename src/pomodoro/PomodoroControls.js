@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./PomodoroControls.css";
 
 class PomodoroControls extends Component {
     constructor(props) {
@@ -56,7 +57,13 @@ class PomodoroControls extends Component {
                     </form>
                 ) : (
                     <div>
-                        <button onClick={this.handlePlay}>Play/Pause</button>
+                        <button onClick={this.handlePlay}>
+                            {this.props.isPaused ? (
+                                <i class="fas fa-play"></i>
+                            ) : (
+                                <i class="fas fa-pause"></i>
+                            )}
+                        </button>
                         {/* <button onClick={this.toggleEdit}>Edit</button> */}
                     </div>
                 )}

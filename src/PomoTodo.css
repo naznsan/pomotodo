@@ -1,6 +1,5 @@
 .PomoTodo {
     height: 100%;
-    border: 3px solid black;
     border-radius: 0.25em;
     display: flex;
     flex-direction: column;
@@ -13,7 +12,15 @@
     width: 100%;
     height: 4em;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     color: #eeeeee;
+}
+
+.PomoTodo-header h1 {
+}
+
+.PomoTodo-header a {
+    margin-left: auto;
+    color: #bbbbbb;
+    font-size: 1.5em;
 }
