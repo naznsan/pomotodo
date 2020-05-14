@@ -1,7 +1,25 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/styles";
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
-import "./TodoList.css";
+
+const styles = {
+    TodoList: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        width: "100%",
+        flexGrow: "1",
+        paddingTop: "0.5em",
+    },
+    todos: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        flexGrow: "1",
+        color: "#dddddd",
+    },
+};
 
 class TodoList extends Component {
     constructor(props) {
@@ -35,9 +53,10 @@ class TodoList extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <div className="TodoList">
-                <div className="TodoList-todos">
+            <div className={classes.TodoList}>
+                <div className={classes.todos}>
                     {this.state.todos.length === 0 ? (
                         <h3>What would you like to get done today?</h3>
                     ) : null}
@@ -58,4 +77,4 @@ class TodoList extends Component {
     }
 }
 
-export default TodoList;
+export default withStyles(styles)(TodoList);
