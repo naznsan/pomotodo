@@ -1,5 +1,17 @@
 import React, { Component } from "react";
-import "./PomodoroControls.css";
+import { withStyles } from "@material-ui/styles";
+
+const styles = {
+    PomodoroControls: {
+        height: "2.5em",
+        "& button": {
+            fontSize: "1.75em",
+            border: "none",
+            color: "#eeeeee",
+            backgroundColor: "#353535",
+        },
+    },
+};
 
 class PomodoroControls extends Component {
     constructor(props) {
@@ -31,8 +43,9 @@ class PomodoroControls extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <div className="PomodoroControls">
+            <div className={classes.PomodoroControls}>
                 {this.state.isEditing ? (
                     <form>
                         <div>
@@ -72,4 +85,4 @@ class PomodoroControls extends Component {
     }
 }
 
-export default PomodoroControls;
+export default withStyles(styles)(PomodoroControls);
