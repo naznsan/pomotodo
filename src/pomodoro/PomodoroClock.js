@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import "./PomodoroClock.css";
+import { withStyles } from "@material-ui/styles";
+
+const styles = {
+    PomodoroClock: {
+        fontSize: "3em",
+        marginBottom: "0",
+    },
+    clock: {
+        marginBottom: "0.5em",
+    },
+};
 
 class PomodoroClock extends Component {
     static defaultProps = {
@@ -33,13 +43,14 @@ class PomodoroClock extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         let parsedSeconds = this.state.seconds;
         if (parsedSeconds < 10) {
             parsedSeconds = "0" + this.state.seconds.toString(10);
         }
         return (
-            <div className="PomodoroClock">
-                <h2 className="PomodoroClock-clock">
+            <div className={classes.PomodoroClock}>
+                <h2 className={classes.clock}>
                     {this.state.minutes} : {parsedSeconds}
                 </h2>
             </div>
@@ -55,4 +66,4 @@ class PomodoroClock extends Component {
     }
 }
 
-export default PomodoroClock;
+export default withStyles(styles)(PomodoroClock);
