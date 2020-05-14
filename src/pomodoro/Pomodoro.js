@@ -1,7 +1,17 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/styles";
 import PomodoroClock from "./PomodoroClock";
 import PomodoroControls from "./PomodoroControls";
-import "./Pomodoro.css";
+
+const styles = {
+    Pomodoro: {
+        width: "100%",
+        height: "15em",
+        color: "#eeeeee",
+        backgroundColor: "#353535",
+        borderRadius: "0.5em",
+    },
+};
 
 class Pomodoro extends Component {
     constructor(props) {
@@ -33,8 +43,9 @@ class Pomodoro extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <div className="Pomodoro">
+            <div className={classes.Pomodoro}>
                 <PomodoroClock
                     initialMinutes={this.state.workTime}
                     isPaused={this.state.isPaused}
@@ -52,4 +63,4 @@ class Pomodoro extends Component {
     }
 }
 
-export default Pomodoro;
+export default withStyles(styles)(Pomodoro);
