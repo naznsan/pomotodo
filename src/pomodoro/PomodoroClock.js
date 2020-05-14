@@ -5,9 +5,18 @@ const styles = {
     PomodoroClock: {
         fontSize: "3em",
         marginBottom: "0",
+        height: "4.25em",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
     },
     clock: {
-        marginBottom: "0.5em",
+        marginBottom: "0",
+        marginTop: "0",
+    },
+    message: {
+        fontSize: "17px",
+        marginTop: "0",
     },
 };
 
@@ -16,6 +25,7 @@ class PomodoroClock extends Component {
         initialMinutes: 45,
         seconds: 0,
         isPaused: true,
+        isWorking: true,
     };
 
     constructor(props) {
@@ -43,16 +53,20 @@ class PomodoroClock extends Component {
     }
 
     render() {
-        const { classes } = this.props;
-        let parsedSeconds = this.state.seconds;
+        const { classes, isWorking } = this.props;
+        const { minutes, seconds } = this.state;
+        let parsedSeconds = seconds;
         if (parsedSeconds < 10) {
-            parsedSeconds = "0" + this.state.seconds.toString(10);
+            parsedSeconds = "0" + seconds.toString(10);
         }
         return (
             <div className={classes.PomodoroClock}>
                 <h2 className={classes.clock}>
-                    {this.state.minutes} : {parsedSeconds}
+                    {minutes} : {parsedSeconds}
                 </h2>
+                <span className={classes.message}>
+                    {isWorking ? "Time to get to work!" : "Time for a break!"}
+                </span>
             </div>
         );
     }
