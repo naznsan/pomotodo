@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 import Pomodoro from "./pomodoro/Pomodoro";
 import TodoList from "./todoList/TodoList";
-import Settings from "./Settings";
+import Settings from "./navbar/Settings";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 const styles = {
