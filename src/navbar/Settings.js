@@ -33,14 +33,14 @@ class Settings extends Component {
 
 		return (
 			<div className={classes.Settings}>
-				<div className={classes.settingsGroup}>
+				{/* <div className={classes.settingsGroup}>
 					<p>Timer Sounds</p>
 					<Checkbox className={classes.checkbox} color="primary" />
 				</div>
 				<div className={classes.settingsGroup}>
 					<p>Save Todos to Browser</p>
 					<Checkbox className={classes.checkbox} color="primary" />
-				</div>
+				</div> */}
 				<div className={classes.settingsGroup}>
 					<p>Github Repo</p>
 					<a href="https://github.com/naznsan/pomotodo">
