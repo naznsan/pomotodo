@@ -26,6 +26,14 @@ const styles = {
 			fontSize: "1.25em",
 		},
 	},
+	todoInput: {
+		width: "22.5em",
+		border: "none",
+		borderBottom: "1px solid black",
+		backgroundColor: "#dddddd",
+		fontSize: "24px",
+		outline: "none",
+	},
 	done: {
 		backgroundColor: "#03dac6",
 		marginRight: "0.25em",
@@ -38,9 +46,6 @@ const styles = {
 class Todo extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			isEditing: false,
-		};
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleToggle = this.handleToggle.bind(this);
 		this.toggleEdit = this.toggleEdit.bind(this);
@@ -82,7 +87,8 @@ class Todo extends Component {
 						value={desc}
 						onChange={this.handleChange}
 						onBlur={this.toggleEdit}
-						autofocus
+						className={classes.todoInput}
+						autoFocus
 					></input>
 				) : (
 					<p style={doneStyle} onDoubleClick={this.toggleEdit}>

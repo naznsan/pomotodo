@@ -20,6 +20,7 @@ const styles = {
 			paddingLeft: "10px",
 			backgroundColor: "#121212",
 			color: "#eeeeee",
+			outline: "none",
 		},
 		"& button": {
 			height: "3em",
