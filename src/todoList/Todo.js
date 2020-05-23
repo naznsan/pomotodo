@@ -98,10 +98,10 @@ class Todo extends Component {
 				)}
 
 				<button className={classes.done} onClick={this.handleToggle}>
-					<i class="fas fa-check"></i>
+					<i className="fas fa-check"></i>
 				</button>
 				<button className={classes.delete} onClick={this.handleDelete}>
-					<i class="fas fa-trash"></i>
+					<i className="fas fa-trash"></i>
 				</button>
 			</div>
 		);

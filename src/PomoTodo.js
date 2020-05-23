@@ -23,8 +23,10 @@ class PomoTodo extends Component {
 		super(props);
 		this.state = {
 			showSettings: false,
+			savedTodos: [],
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);
+		this.saveTodos = this.saveTodos.bind(this);
 	}
 
 	toggleSettings() {
@@ -33,9 +35,15 @@ class PomoTodo extends Component {
 		});
 	}
 
+	saveTodos(todos) {
+		this.setState({
+			savedTodos: todos,
+		});
+	}
+
 	render() {
 		const { classes } = this.props;
-		const { showSettings } = this.state;
+		const { showSettings, savedTodos } = this.state;
 
 		return (
 			<div className={classes.PomoTodo}>
@@ -48,7 +56,10 @@ class PomoTodo extends Component {
 				) : (
 					<React.Fragment>
 						<Pomodoro />
-						<TodoList />
+						<TodoList
+							savedTodos={savedTodos}
+							saveTodos={this.saveTodos}
+						/>
 					</React.Fragment>
 				)}
 			</div>

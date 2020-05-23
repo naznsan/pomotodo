@@ -100,6 +100,16 @@ class TodoList extends Component {
 			</div>
 		);
 	}
+
+	componentDidMount() {
+		this.setState({
+			todos: this.props.savedTodos,
+		});
+	}
+
+	componentWillUnmount() {
+		this.props.saveTodos(this.state.todos);
+	}
 }
 
 export default withStyles(styles)(TodoList);

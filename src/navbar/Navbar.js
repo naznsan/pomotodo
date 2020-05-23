@@ -38,13 +38,13 @@ class Navbar extends Component {
 				{showSettings ? (
 					<CloseIcon
 						className={classes.Icon}
-						fontSize="medium"
+						fontSize="small"
 						onClick={this.handleClick}
 					/>
 				) : (
 					<SettingsIcon
 						className={classes.Icon}
-						fontSize="medium"
+						fontSize="small"
 						onClick={this.handleClick}
 					/>
 				)}
