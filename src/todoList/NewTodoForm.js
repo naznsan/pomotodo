@@ -49,7 +49,12 @@ class NewTodoForm extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		const newTodo = { desc: this.state.desc, id: uuid(), done: false };
+		const newTodo = {
+			desc: this.state.desc,
+			id: uuid(),
+			done: false,
+			isEditing: false,
+		};
 		this.props.addTodo(newTodo);
 		this.setState({ desc: "" });
 	}
