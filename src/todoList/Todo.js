@@ -24,6 +24,7 @@ const styles = {
 			border: "none",
 			borderRadius: "0.5em",
 			fontSize: "1.25em",
+			outline: "none",
 		},
 	},
 	todoInput: {

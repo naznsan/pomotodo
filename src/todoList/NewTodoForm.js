@@ -28,6 +28,7 @@ const styles = {
 			border: "none",
 			backgroundColor: "#121212",
 			color: "#eeeeee",
+			outline: "none",
 		},
 	},
 };
