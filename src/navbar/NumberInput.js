@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/styles";
 
 const styles = {
 	NumberInput: {
-		border: "1px solid white",
 		width: "6em",
 		height: "2.5em",
 		display: "flex",
@@ -58,17 +57,12 @@ class NumberInput extends Component {
 		const { classes } = this.props;
 
 		return (
-			<div className={classes.NumberInput}>
+			<div className={classes.NumberInput} onWheel={this.handleScroll}>
 				<RemoveIcon
 					className={classes.minusButton}
 					onClick={this.handleSubtract}
 				/>
-				<p
-					className={classes.numberDisplay}
-					onWheel={this.handleScroll}
-				>
-					{currNumber}
-				</p>
+				<p className={classes.numberDisplay}>{currNumber}</p>
 				<AddIcon
 					className={classes.plusButton}
 					onClick={this.handleAdd}
