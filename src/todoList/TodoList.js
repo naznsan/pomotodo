@@ -18,6 +18,9 @@ const styles = {
 		justifyContent: "flex-start",
 		flexGrow: "1",
 		color: "#dddddd",
+		height: "200px",
+		overflowX: "hidden",
+		overflowY: "auto",
 	},
 };
 
