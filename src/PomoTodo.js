@@ -22,7 +22,7 @@ class PomoTodo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showSettings: false,
+			showSettings: true,
 			savedTodos: [],
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);

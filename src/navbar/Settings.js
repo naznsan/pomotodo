@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
 import { Checkbox } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import NumberInput from "./NumberInput";
 
 const styles = {
 	Settings: {
@@ -17,6 +18,7 @@ const styles = {
 		width: "80%",
 		display: "flex",
 		justifyContent: "space-between",
+		alignItems: "center",
 	},
 	checkbox: {
 		color: "white",
@@ -41,6 +43,14 @@ class Settings extends Component {
 					<p>Save Todos to Browser</p>
 					<Checkbox className={classes.checkbox} color="primary" />
 				</div> */}
+				<div className={classes.settingsGroup}>
+					<p>Work Minutes</p>
+					<NumberInput />
+				</div>
+				<div className={classes.settingsGroup}>
+					<p>Rest Minutes</p>
+					<NumberInput />
+				</div>
 				<div className={classes.settingsGroup}>
 					<p>Github Repo</p>
 					<a href="https://github.com/naznsan/pomotodo">
