@@ -37,6 +37,10 @@ class Settings extends Component {
 			restTime,
 			changeWorkTime,
 			changeRestTime,
+			sound,
+			toggleSound,
+			saveLocalStorage,
+			toggleSaveLocalStorage,
 		} = this.props;
 
 		return (
@@ -51,11 +55,21 @@ class Settings extends Component {
 				</div>
 				<div className={classes.settingsGroup}>
 					<p>Timer Sounds</p>
-					<Checkbox className={classes.checkbox} color="primary" />
+					<Checkbox
+						className={classes.checkbox}
+						color="primary"
+						checked={sound}
+						onChange={toggleSound}
+					/>
 				</div>
 				<div className={classes.settingsGroup}>
 					<p>Save Todos to Browser</p>
-					<Checkbox className={classes.checkbox} color="primary" />
+					<Checkbox
+						className={classes.checkbox}
+						color="primary"
+						checked={saveLocalStorage}
+						onChange={toggleSaveLocalStorage}
+					/>
 				</div>
 
 				<div className={classes.settingsGroup}>

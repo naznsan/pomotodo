@@ -25,12 +25,16 @@ class PomoTodo extends Component {
 			showSettings: true,
 			workTime: 45,
 			restTime: 15,
+			sound: true,
+			saveLocalStorage: true,
 			savedTodos: [],
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);
 		this.saveTodos = this.saveTodos.bind(this);
 		this.changeWorkTime = this.changeWorkTime.bind(this);
 		this.changeRestTime = this.changeRestTime.bind(this);
+		this.toggleSound = this.toggleSound.bind(this);
+		this.toggleSaveLocalStorage = this.toggleSaveLocalStorage.bind(this);
 	}
 
 	toggleSettings() {
@@ -63,9 +67,24 @@ class PomoTodo extends Component {
 		}
 	}
 
+	toggleSound() {
+		this.setState({ sound: !this.state.sound });
+	}
+
+	toggleSaveLocalStorage() {
+		this.setState({ saveLocalStorage: !this.state.saveLocalStorage });
+	}
+
 	render() {
 		const { classes } = this.props;
-		const { showSettings, savedTodos, workTime, restTime } = this.state;
+		const {
+			showSettings,
+			savedTodos,
+			workTime,
+			restTime,
+			sound,
+			saveLocalStorage,
+		} = this.state;
 
 		return (
 			<div className={classes.PomoTodo}>
@@ -79,6 +98,10 @@ class PomoTodo extends Component {
 						restTime={restTime}
 						changeWorkTime={this.changeWorkTime}
 						changeRestTime={this.changeRestTime}
+						sound={sound}
+						toggleSound={this.toggleSound}
+						saveLocalStorage={saveLocalStorage}
+						toggleSaveLocalStorage={this.toggleSaveLocalStorage}
 					/>
 				) : (
 					<React.Fragment>
