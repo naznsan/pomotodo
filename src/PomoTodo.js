@@ -22,7 +22,7 @@ class PomoTodo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showSettings: true,
+			showSettings: false,
 			workTime: 45,
 			restTime: 15,
 			sound: true,
@@ -105,7 +105,7 @@ class PomoTodo extends Component {
 					/>
 				) : (
 					<React.Fragment>
-						<Pomodoro />
+						<Pomodoro workTime={workTime} restTime={restTime} />
 						<TodoList
 							savedTodos={savedTodos}
 							saveTodos={this.saveTodos}

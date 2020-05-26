@@ -17,10 +17,8 @@ class Pomodoro extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			workTime: 45,
-			restTime: 15,
 			isPaused: true,
-			currMinutes: 0,
+			currMinutes: this.props.workTime,
 			currSeconds: 0,
 		};
 		this.changeTime = this.changeTime.bind(this);
@@ -44,6 +42,24 @@ class Pomodoro extends Component {
 		this.setState(newState);
 	}
 
+	countdown() {
+		setInterval(() => {
+			if (this.state.isPaused) {
+				return;
+			}
+			let newState;
+			if (this.state.currSeconds === 0) {
+				newState = {
+					currMinutes: this.state.currMinutes - 1,
+					currSeconds: 59,
+				};
+			} else {
+				newState = { currSeconds: this.state.currSeconds - 1 };
+			}
+			this.setState(newState);
+		}, 1000);
+	}
+
 	render() {
 		const { classes } = this.props;
 		const { currMinutes, currSeconds } = this.state;
@@ -53,7 +69,6 @@ class Pomodoro extends Component {
 				<PomodoroClock
 					currMinutes={currMinutes}
 					currSeconds={currSeconds}
-					isPaused={this.state.isPaused}
 				/>
 				<PomodoroControls
 					changeTime={this.changeTime}
@@ -64,6 +79,10 @@ class Pomodoro extends Component {
 				/>
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.countdown();
 	}
 }
 

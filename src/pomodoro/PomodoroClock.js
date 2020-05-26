@@ -21,39 +21,16 @@ const styles = {
 };
 
 class PomodoroClock extends Component {
-	static defaultProps = {
-		initialMinutes: 5,
-		seconds: 0,
-		isPaused: true,
-		isWorking: true,
-	};
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			minutes: this.props.initialMinutes,
-			seconds: 0,
+			isWorking: true,
 		};
-		this.countdown = this.countdown.bind(this);
-	}
-
-	countdown() {
-		setInterval(() => {
-			if (this.props.isPaused) {
-				return;
-			}
-			let newState;
-			if (this.state.seconds === 0) {
-				newState = { minutes: this.state.minutes - 1, seconds: 59 };
-			} else {
-				newState = { seconds: this.state.seconds - 1 };
-			}
-			this.setState(newState);
-		}, 1000);
 	}
 
 	render() {
-		const { classes, isWorking, currMinutes, currSeconds } = this.props;
+		const { classes, currMinutes, currSeconds } = this.props;
+		const { isWorking } = this.state;
 
 		let parsedMinutes = currMinutes;
 		if (parsedMinutes < 10) parsedMinutes = "0" + currMinutes.toString(10);
@@ -70,14 +47,6 @@ class PomodoroClock extends Component {
 				</span>
 			</div>
 		);
-	}
-
-	componentDidMount() {
-		this.countdown();
-	}
-
-	componentDidUpdate() {
-		console.log("Updated");
 	}
 }
 
