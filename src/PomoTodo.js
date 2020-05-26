@@ -23,10 +23,14 @@ class PomoTodo extends Component {
 		super(props);
 		this.state = {
 			showSettings: true,
+			workTime: 45,
+			restTime: 15,
 			savedTodos: [],
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);
 		this.saveTodos = this.saveTodos.bind(this);
+		this.changeWorkTime = this.changeWorkTime.bind(this);
+		this.changeRestTime = this.changeRestTime.bind(this);
 	}
 
 	toggleSettings() {
@@ -41,9 +45,27 @@ class PomoTodo extends Component {
 		});
 	}
 
+	changeWorkTime(sign) {
+		if (sign === "plus") {
+			this.setState({ workTime: this.state.workTime + 1 });
+		} else if (sign === "minus") {
+			if (this.state.workTime > 0)
+				this.setState({ workTime: this.state.workTime - 1 });
+		}
+	}
+
+	changeRestTime(sign) {
+		if (sign === "plus") {
+			this.setState({ restTime: this.state.restTime + 1 });
+		} else if (sign === "minus") {
+			if (this.state.restTime > 0)
+				this.setState({ restTime: this.state.restTime - 1 });
+		}
+	}
+
 	render() {
 		const { classes } = this.props;
-		const { showSettings, savedTodos } = this.state;
+		const { showSettings, savedTodos, workTime, restTime } = this.state;
 
 		return (
 			<div className={classes.PomoTodo}>
@@ -52,7 +74,12 @@ class PomoTodo extends Component {
 					showSettings={showSettings}
 				/>
 				{showSettings ? (
-					<Settings />
+					<Settings
+						workTime={workTime}
+						restTime={restTime}
+						changeWorkTime={this.changeWorkTime}
+						changeRestTime={this.changeRestTime}
+					/>
 				) : (
 					<React.Fragment>
 						<Pomodoro />

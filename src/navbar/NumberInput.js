@@ -25,26 +25,18 @@ const styles = {
 class NumberInput extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			currNumber: 0,
-		};
+
 		this.handleAdd = this.handleAdd.bind(this);
 		this.handleSubtract = this.handleSubtract.bind(this);
 		this.handleScroll = this.handleScroll.bind(this);
 	}
 
 	handleAdd() {
-		this.setState({
-			currNumber: this.state.currNumber + 1,
-		});
+		this.props.changeTime("plus");
 	}
 
 	handleSubtract() {
-		if (this.state.currNumber > 0) {
-			this.setState({
-				currNumber: this.state.currNumber - 1,
-			});
-		}
+		this.props.changeTime("minus");
 	}
 
 	handleScroll(event) {
@@ -53,8 +45,7 @@ class NumberInput extends Component {
 	}
 
 	render() {
-		const { currNumber } = this.state;
-		const { classes } = this.props;
+		const { classes, value } = this.props;
 
 		return (
 			<div className={classes.NumberInput} onWheel={this.handleScroll}>
@@ -62,7 +53,7 @@ class NumberInput extends Component {
 					className={classes.minusButton}
 					onClick={this.handleSubtract}
 				/>
-				<p className={classes.numberDisplay}>{currNumber}</p>
+				<p className={classes.numberDisplay}>{value}</p>
 				<AddIcon
 					className={classes.plusButton}
 					onClick={this.handleAdd}

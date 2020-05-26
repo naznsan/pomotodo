@@ -31,26 +31,33 @@ const styles = {
 
 class Settings extends Component {
 	render() {
-		const { classes } = this.props;
+		const {
+			classes,
+			workTime,
+			restTime,
+			changeWorkTime,
+			changeRestTime,
+		} = this.props;
 
 		return (
 			<div className={classes.Settings}>
-				{/* <div className={classes.settingsGroup}>
+				<div className={classes.settingsGroup}>
+					<p>Work Minutes</p>
+					<NumberInput value={workTime} changeTime={changeWorkTime} />
+				</div>
+				<div className={classes.settingsGroup}>
+					<p>Rest Minutes</p>
+					<NumberInput value={restTime} changeTime={changeRestTime} />
+				</div>
+				<div className={classes.settingsGroup}>
 					<p>Timer Sounds</p>
 					<Checkbox className={classes.checkbox} color="primary" />
 				</div>
 				<div className={classes.settingsGroup}>
 					<p>Save Todos to Browser</p>
 					<Checkbox className={classes.checkbox} color="primary" />
-				</div> */}
-				<div className={classes.settingsGroup}>
-					<p>Work Minutes</p>
-					<NumberInput />
 				</div>
-				<div className={classes.settingsGroup}>
-					<p>Rest Minutes</p>
-					<NumberInput />
-				</div>
+
 				<div className={classes.settingsGroup}>
 					<p>Github Repo</p>
 					<a href="https://github.com/naznsan/pomotodo">
