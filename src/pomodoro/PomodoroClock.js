@@ -29,8 +29,7 @@ class PomodoroClock extends Component {
 	}
 
 	render() {
-		const { classes, currMinutes, currSeconds } = this.props;
-		const { isWorking } = this.state;
+		const { classes, currMinutes, currSeconds, isWorking } = this.props;
 
 		let parsedMinutes = currMinutes;
 		if (parsedMinutes < 10) parsedMinutes = "0" + currMinutes.toString(10);

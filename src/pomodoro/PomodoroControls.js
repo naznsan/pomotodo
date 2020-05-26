@@ -9,6 +9,7 @@ const styles = {
 			border: "none",
 			color: "#eeeeee",
 			backgroundColor: "#353535",
+			outline: "none",
 		},
 	},
 };

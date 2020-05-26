@@ -20,6 +20,7 @@ class Pomodoro extends Component {
 			isPaused: true,
 			currMinutes: this.props.workTime,
 			currSeconds: 0,
+			isWorking: true,
 		};
 		this.changeTime = this.changeTime.bind(this);
 		this.togglePlay = this.togglePlay.bind(this);
@@ -42,8 +43,44 @@ class Pomodoro extends Component {
 		this.setState(newState);
 	}
 
-	countdown() {
-		setInterval(() => {
+	toggleWorkRest() {
+		this.setState({
+			isWorking: !this.state.isWorking,
+			currMinutes: this.state.isWorking
+				? this.props.restTime
+				: this.props.workTime,
+			currSeconds: 0,
+		});
+	}
+
+	render() {
+		const { classes } = this.props;
+		const { isWorking, currMinutes, currSeconds } = this.state;
+
+		return (
+			<div className={classes.Pomodoro}>
+				<PomodoroClock
+					isWorking={isWorking}
+					currMinutes={currMinutes}
+					currSeconds={currSeconds}
+				/>
+				<PomodoroControls
+					changeTime={this.changeTime}
+					workTime={this.state.workTime}
+					restTime={this.state.restTime}
+					togglePlay={this.togglePlay}
+					isPaused={this.state.isPaused}
+				/>
+			</div>
+		);
+	}
+
+	componentDidMount() {
+		this.countdown = setInterval(() => {
+			if (this.state.currMinutes === 0 && this.state.currSeconds === 0) {
+				this.setState({ isPaused: true });
+				this.toggleWorkRest();
+			}
 			if (this.state.isPaused) {
 				return;
 			}
@@ -60,29 +97,8 @@ class Pomodoro extends Component {
 		}, 1000);
 	}
 
-	render() {
-		const { classes } = this.props;
-		const { currMinutes, currSeconds } = this.state;
-
-		return (
-			<div className={classes.Pomodoro}>
-				<PomodoroClock
-					currMinutes={currMinutes}
-					currSeconds={currSeconds}
-				/>
-				<PomodoroControls
-					changeTime={this.changeTime}
-					workTime={this.state.workTime}
-					restTime={this.state.restTime}
-					togglePlay={this.togglePlay}
-					isPaused={this.state.isPaused}
-				/>
-			</div>
-		);
-	}
-
-	componentDidMount() {
-		this.countdown();
+	componentWillUnmount() {
+		clearInterval(this.countdown);
 	}
 }
 
