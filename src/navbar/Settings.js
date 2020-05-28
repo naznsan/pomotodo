@@ -27,6 +27,11 @@ const styles = {
 		padding: "9px",
 		color: "white",
 	},
+	messageText: {
+		marginLeft: "5px",
+		color: "grey",
+		fontSize: "12px",
+	},
 };
 
 class Settings extends Component {
@@ -54,7 +59,10 @@ class Settings extends Component {
 					<NumberInput value={restTime} changeTime={changeRestTime} />
 				</div>
 				<div className={classes.settingsGroup}>
-					<p>Timer Sounds</p>
+					<p>
+						Timer Sounds{" "}
+						<span className={classes.messageText}>coming soon</span>
+					</p>
 					<Checkbox
 						className={classes.checkbox}
 						color="primary"
@@ -63,7 +71,10 @@ class Settings extends Component {
 					/>
 				</div>
 				<div className={classes.settingsGroup}>
-					<p>Save Todos to Browser</p>
+					<p>
+						Save Todos to Browser{" "}
+						<span className={classes.messageText}>coming soon</span>
+					</p>
 					<Checkbox
 						className={classes.checkbox}
 						color="primary"

@@ -30,6 +30,7 @@ class TodoList extends Component {
 		this.state = {
 			todos: [],
 		};
+
 		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
 		this.toggleTodo = this.toggleTodo.bind(this);
@@ -79,13 +80,31 @@ class TodoList extends Component {
 
 	render() {
 		const { classes } = this.props;
+		const { todos } = this.state;
+
+		let notDoneTodos = todos.filter(t => !t.done);
+		let doneTodos = todos.filter(t => t.done);
+
 		return (
 			<div className={classes.TodoList}>
 				<div className={classes.todos}>
-					{this.state.todos.length === 0 ? (
+					{todos.length === 0 ? (
 						<h3>What would you like to get done today?</h3>
 					) : null}
-					{this.state.todos.map(t => (
+					{notDoneTodos.map(t => (
+						<Todo
+							desc={t.desc}
+							key={t.id}
+							id={t.id}
+							done={t.done}
+							isEditing={t.isEditing}
+							removeTodo={this.removeTodo}
+							toggleTodo={this.toggleTodo}
+							toggleEditTodo={this.toggleEditTodo}
+							editTodo={this.editTodo}
+						/>
+					))}
+					{doneTodos.map(t => (
 						<Todo
 							desc={t.desc}
 							key={t.id}

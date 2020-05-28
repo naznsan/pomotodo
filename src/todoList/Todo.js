@@ -47,6 +47,7 @@ const styles = {
 class Todo extends Component {
 	constructor(props) {
 		super(props);
+
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleToggle = this.handleToggle.bind(this);
 		this.toggleEdit = this.toggleEdit.bind(this);
