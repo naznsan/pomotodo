@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
 import PomodoroClock from "./PomodoroClock";
 import PomodoroControls from "./PomodoroControls";
+import UIfx from "uifx";
+import bellAudio from "../sounds/hand-bell.mp3";
 
 const styles = {
 	Pomodoro: {
@@ -12,6 +14,8 @@ const styles = {
 		borderRadius: "0.5em",
 	},
 };
+
+const bell = new UIfx(bellAudio, { volume: 0.75, throttleMs: 100 });
 
 class Pomodoro extends Component {
 	constructor(props) {
@@ -78,6 +82,9 @@ class Pomodoro extends Component {
 	componentDidMount() {
 		this.countdown = setInterval(() => {
 			if (this.state.currMinutes === 0 && this.state.currSeconds === 0) {
+				if (this.props.sound) {
+					bell.play();
+				}
 				this.setState({ isPaused: true });
 				this.toggleWorkRest();
 			}

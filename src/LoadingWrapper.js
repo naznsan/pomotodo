@@ -43,15 +43,15 @@ class LoadingWrapper extends Component {
 		const saveLocalStorage = window.localStorage.getItem(
 			"saveLocalStorage"
 		);
-
 		// Load custom times
 		const savedTimes = window.localStorage.getItem("savedTimes") || "45 15";
 		const workTime = parseInt(savedTimes.split(" ")[0]);
 		const restTime = parseInt(savedTimes.split(" ")[1]);
-
 		// Load savedTodos
 		const loadTodos = window.localStorage.getItem("savedTodos") || "[]";
 		const savedTodos = JSON.parse(loadTodos);
+		// Load sound
+		const sound = window.localStorage.getItem("sound");
 
 		this.setState({
 			saveLocalStorage: saveLocalStorage === "true",
@@ -59,6 +59,7 @@ class LoadingWrapper extends Component {
 			restTime: restTime,
 			isLoading: false,
 			savedTodos: savedTodos,
+			sound: sound === "true",
 		});
 
 		console.log("loaded");
@@ -71,6 +72,7 @@ class LoadingWrapper extends Component {
 			workTime,
 			restTime,
 			savedTodos,
+			sound,
 		} = this.state;
 		const { classes } = this.props;
 
@@ -91,6 +93,7 @@ class LoadingWrapper extends Component {
 						workTime={workTime}
 						restTime={restTime}
 						savedTodos={savedTodos}
+						sound={sound}
 					/>
 				)}
 			</React.Fragment>

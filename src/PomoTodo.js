@@ -25,7 +25,7 @@ class PomoTodo extends Component {
 			showSettings: false,
 			workTime: this.props.workTime,
 			restTime: this.props.restTime,
-			sound: true,
+			sound: this.props.sound,
 			saveLocalStorage: this.props.saveLocalStorage,
 			savedTodos: this.props.savedTodos,
 		};
@@ -84,10 +84,14 @@ class PomoTodo extends Component {
 			// Saving Times
 			const savedTimes = `${this.state.workTime} ${this.state.restTime}`;
 			window.localStorage.setItem("savedTimes", savedTimes);
-
 			// Saving Todos
 			const savedTodos = JSON.stringify(this.state.savedTodos);
 			window.localStorage.setItem("savedTodos", savedTodos);
+			// Saving sound
+			window.localStorage.setItem(
+				"sound",
+				this.state.sound ? "true" : "false"
+			);
 		} else {
 			window.localStorage.removeItem("saveLocalStorage");
 			window.localStorage.removeItem("savedTimes");
@@ -137,7 +141,11 @@ class PomoTodo extends Component {
 					/>
 				) : (
 					<React.Fragment>
-						<Pomodoro workTime={workTime} restTime={restTime} />
+						<Pomodoro
+							workTime={workTime}
+							restTime={restTime}
+							sound={sound}
+						/>
 						<TodoList
 							savedTodos={savedTodos}
 							saveTodos={this.saveTodos}
