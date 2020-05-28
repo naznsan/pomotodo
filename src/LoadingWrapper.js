@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import PomoTodo from "./PomoTodo";
 import { withStyles } from "@material-ui/styles";
+import ReactLoading from "react-loading";
 
 const styles = {
 	LoadingWrapper: {
+		border: "1px solid black",
 		width: "100%",
 		height: "100%",
+		borderRadius: "0.25em",
+		backgroundColor: "#121212",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "flex-end",
+	},
+	loading: {
+		marginBottom: "40%",
 	},
 };
 
@@ -51,9 +62,15 @@ class LoadingWrapper extends Component {
 		const { classes } = this.props;
 
 		return (
-			<div className={classes.LoadingWrapper}>
+			<React.Fragment>
 				{isLoading ? (
-					<h1>Loading...</h1>
+					<div className={classes.LoadingWrapper}>
+						<ReactLoading
+							className={classes.loading}
+							type="spinningBubbles"
+							color="white"
+						/>
+					</div>
 				) : (
 					<PomoTodo
 						isLoading={isLoading}
@@ -62,7 +79,7 @@ class LoadingWrapper extends Component {
 						restTime={restTime}
 					/>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 
