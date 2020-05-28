@@ -1,13 +1,13 @@
 import React from "react";
-import PomoTodo from "./PomoTodo";
+import LoadingWrapper from "./LoadingWrapper";
 import "./App.css";
 
 function App() {
-    return (
-        <div className="App">
-            <PomoTodo />
-        </div>
-    );
+	return (
+		<div className="App">
+			<LoadingWrapper />
+		</div>
+	);
 }
 
 export default App;

@@ -23,10 +23,10 @@ class PomoTodo extends Component {
 		super(props);
 		this.state = {
 			showSettings: false,
-			workTime: 45,
-			restTime: 15,
+			workTime: this.props.workTime,
+			restTime: this.props.restTime,
 			sound: true,
-			saveLocalStorage: true,
+			saveLocalStorage: this.props.saveLocalStorage,
 			savedTodos: [],
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);
@@ -35,6 +35,7 @@ class PomoTodo extends Component {
 		this.changeRestTime = this.changeRestTime.bind(this);
 		this.toggleSound = this.toggleSound.bind(this);
 		this.toggleSaveLocalStorage = this.toggleSaveLocalStorage.bind(this);
+		this.saveData = this.saveData.bind(this);
 	}
 
 	toggleSettings() {
@@ -73,6 +74,33 @@ class PomoTodo extends Component {
 
 	toggleSaveLocalStorage() {
 		this.setState({ saveLocalStorage: !this.state.saveLocalStorage });
+	}
+
+	// Saving Todos and Times upon browser/tab close
+	saveData() {
+		if (this.state.saveLocalStorage) {
+			// Saving saveLocalStorage
+			window.localStorage.setItem("saveLocalStorage", "true");
+			// Saving Times
+			const savedTimes = `${this.state.workTime} ${this.state.restTime}`;
+			window.localStorage.setItem("savedTimes", savedTimes);
+		} else {
+			window.localStorage.removeItem("saveLocalStorage");
+			window.localStorage.removeItem("savedTimes");
+			window.localStorage.removeItem("savedTodos");
+		}
+	}
+
+	componentDidMount() {
+		window.addEventListener("beforeunload", () => {
+			this.saveData();
+		});
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener("beforeunload", () => {
+			this.saveData();
+		});
 	}
 
 	render() {
