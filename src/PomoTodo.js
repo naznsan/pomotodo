@@ -27,7 +27,7 @@ class PomoTodo extends Component {
 			restTime: this.props.restTime,
 			sound: true,
 			saveLocalStorage: this.props.saveLocalStorage,
-			savedTodos: [],
+			savedTodos: this.props.savedTodos,
 		};
 		this.toggleSettings = this.toggleSettings.bind(this);
 		this.saveTodos = this.saveTodos.bind(this);
@@ -84,6 +84,10 @@ class PomoTodo extends Component {
 			// Saving Times
 			const savedTimes = `${this.state.workTime} ${this.state.restTime}`;
 			window.localStorage.setItem("savedTimes", savedTimes);
+
+			// Saving Todos
+			const savedTodos = JSON.stringify(this.state.savedTodos);
+			window.localStorage.setItem("savedTodos", savedTodos);
 		} else {
 			window.localStorage.removeItem("saveLocalStorage");
 			window.localStorage.removeItem("savedTimes");

@@ -38,24 +38,27 @@ class TodoList extends Component {
 		this.editTodo = this.editTodo.bind(this);
 	}
 
-	addTodo(newTodo) {
-		this.setState({ todos: [...this.state.todos, newTodo] });
+	async addTodo(newTodo) {
+		await this.setState({ todos: [...this.state.todos, newTodo] });
+		this.props.saveTodos(this.state.todos);
 	}
 
-	removeTodo(delTodoId) {
-		this.setState({
+	async removeTodo(delTodoId) {
+		await this.setState({
 			todos: this.state.todos.filter(t => t.id !== delTodoId),
 		});
+		this.props.saveTodos(this.state.todos);
 	}
 
-	toggleTodo(doneTodoId) {
+	async toggleTodo(doneTodoId) {
 		let newTodos = this.state.todos.map(todo => {
 			if (todo.id === doneTodoId) {
 				return { ...todo, done: !todo.done };
 			}
 			return todo;
 		});
-		this.setState({ todos: newTodos });
+		await this.setState({ todos: newTodos });
+		this.props.saveTodos(this.state.todos);
 	}
 
 	toggleEditTodo(editTodoId) {
@@ -68,14 +71,15 @@ class TodoList extends Component {
 		this.setState({ todos: newTodos });
 	}
 
-	editTodo(editTodoId, newDesc) {
+	async editTodo(editTodoId, newDesc) {
 		let newTodos = this.state.todos.map(todo => {
 			if (todo.id === editTodoId) {
 				return { ...todo, desc: newDesc };
 			}
 			return todo;
 		});
-		this.setState({ todos: newTodos });
+		await this.setState({ todos: newTodos });
+		this.props.saveTodos(this.state.todos);
 	}
 
 	render() {
