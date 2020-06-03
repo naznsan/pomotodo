@@ -10,5 +10,4 @@ PomoTodo was made using React as practice.
 
 
 ## Work to be done
-* Better layout on mobile
 * Bug squashing
