@@ -59,10 +59,7 @@ class Settings extends Component {
 					<NumberInput value={restTime} changeTime={changeRestTime} />
 				</div>
 				<div className={classes.settingsGroup}>
-					<p>
-						Timer Sounds{" "}
-						<span className={classes.messageText}>coming soon</span>
-					</p>
+					<p>Timer Sounds </p>
 					<Checkbox
 						className={classes.checkbox}
 						color="primary"
@@ -71,10 +68,7 @@ class Settings extends Component {
 					/>
 				</div>
 				<div className={classes.settingsGroup}>
-					<p>
-						Save Todos to Browser{" "}
-						<span className={classes.messageText}>coming soon</span>
-					</p>
+					<p>Save Todos to Browser </p>
 					<Checkbox
 						className={classes.checkbox}
 						color="primary"

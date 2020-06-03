@@ -31,6 +31,16 @@ const styles = {
 			outline: "none",
 		},
 	},
+	"@media only screen and (max-width: 480px)": {
+		NewTodoForm: {
+			"& input": {
+				width: "85%",
+			},
+			"& button": {
+				width: "15%",
+			},
+		},
+	},
 };
 
 class NewTodoForm extends Component {
@@ -74,6 +84,7 @@ class NewTodoForm extends Component {
 						name="desc"
 						value={this.state.desc}
 						placeholder="Add New Todo"
+						autoComplete="off"
 					></input>
 				</div>
 				<button>

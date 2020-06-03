@@ -16,6 +16,11 @@ const styles = {
 		backgroundColor: "#121212",
 		padding: "0 0.5em",
 	},
+	"@media only screen and (max-width: 480px)": {
+		PomoTodo: {
+			borderRadius: "0",
+		},
+	},
 };
 
 class PomoTodo extends Component {

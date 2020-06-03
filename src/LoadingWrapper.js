@@ -61,8 +61,6 @@ class LoadingWrapper extends Component {
 			savedTodos: savedTodos,
 			sound: sound === "true",
 		});
-
-		console.log("loaded");
 	}
 
 	render() {

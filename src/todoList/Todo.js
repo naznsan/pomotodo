@@ -42,6 +42,12 @@ const styles = {
 	delete: {
 		backgroundColor: "#cf6679",
 	},
+	"@media only screen and (max-width: 480px)": {
+		todoInput: {
+			border: "1px solid green",
+			width: "80%",
+		},
+	},
 };
 
 class Todo extends Component {
